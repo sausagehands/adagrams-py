@@ -16,4 +16,4 @@ def score_word(word):
     return scoring(word)
 
 def get_highest_word_score(word_list):
-    pass
+    return highest_score(word_list)

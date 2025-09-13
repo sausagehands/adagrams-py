@@ -97,6 +97,31 @@ def scoring(word):
     return score
         
     
-
+def highest_score(word_list):
+    winning_word = ''
+    high_score = 0
+    
+    for word in word_list:
+        current_score = scoring(word)
+        if current_score > high_score:
+            high_score = current_score
+            winning_word = word
+        elif current_score == high_score:
+            length_current_word = list_length(convert_to_list(word))
+            length_winning_word = list_length(convert_to_list(winning_word))
+            
+            if length_current_word == 10 and length_winning_word != 10:
+                winning_word = word
+            elif length_winning_word == 10 and length_current_word != 10: 
+                winning_word = winning_word
+            elif length_winning_word > length_current_word:
+                winning_word = word
+                
+    return winning_word, high_score
+            
+                
+            
+        
+        
 
 scoring('dog')
