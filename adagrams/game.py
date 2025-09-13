@@ -1,10 +1,16 @@
 from random import randint
+from homemade_functions import*
 
 def draw_letters():
-    pass
+    chosen_letters = draw_hand()
+    return chosen_letters
 
 def uses_available_letters(word, letter_bank):
-    pass
+    word_list = convert_to_list(word)
+    word_dict = convert_to_dictionary(word_list)
+    hand_dict = convert_to_dictionary(letter_bank)
+    return compare_word_to_hand(word_dict, hand_dict)
+    
 
 def score_word(word):
     pass
