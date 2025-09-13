@@ -1,34 +1,6 @@
 import random
 from random import randint
-
-LETTER_POOL = {
-    'A': 9, 
-    'B': 2, 
-    'C': 2, 
-    'D': 4, 
-    'E': 12, 
-    'F': 2, 
-    'G': 3, 
-    'H': 2, 
-    'I': 9, 
-    'J': 1, 
-    'K': 1, 
-    'L': 4, 
-    'M': 2, 
-    'N': 6, 
-    'O': 8, 
-    'P': 2, 
-    'Q': 1, 
-    'R': 6, 
-    'S': 4, 
-    'T': 6, 
-    'U': 4, 
-    'V': 2, 
-    'W': 2, 
-    'X': 1, 
-    'Y': 2, 
-    'Z': 1
-}
+from constants import*
 
 def convert_to_list(word):
     deconstructed_word = []
@@ -108,9 +80,23 @@ def compare_word_to_hand(word_dict, hand_dict):
         elif word_dict[letter] > hand_dict[letter]:
             return False
     return True
+
+def scoring(word):
+    word_length = list_length(convert_to_list(word))
+    word_played = convert_to_dictionary(convert_to_list(word))
     
+    score = 0
+    
+    if word_length >= 7:
+        score += 8
+    for letter, count in word_played.items():
+        for letters, points in SCORE_CHART.items():
+            if letter in letters:
+                score += word_played[letter] * SCORE_CHART[letters]
+                break
+    return score
+        
     
 
 
-sample_list = ['d','o','g','g']
-convert_to_dictionary(sample_list)
+scoring('dog')

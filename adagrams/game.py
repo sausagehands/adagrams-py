@@ -13,7 +13,7 @@ def uses_available_letters(word, letter_bank):
     
 
 def score_word(word):
-    pass
+    return scoring(word)
 
 def get_highest_word_score(word_list):
     pass
