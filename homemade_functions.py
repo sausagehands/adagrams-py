@@ -2,6 +2,36 @@ import random
 from random import randint
 from constants import*
 
+LETTER_POOL = {
+    'A': 9, 
+    'B': 2, 
+    'C': 2, 
+    'D': 4, 
+    'E': 12, 
+    'F': 2, 
+    'G': 3, 
+    'H': 2, 
+    'I': 9, 
+    'J': 1, 
+    'K': 1, 
+    'L': 4, 
+    'M': 2, 
+    'N': 6, 
+    'O': 8, 
+    'P': 2, 
+    'Q': 1, 
+    'R': 6, 
+    'S': 4, 
+    'T': 6, 
+    'U': 4, 
+    'V': 2, 
+    'W': 2, 
+    'X': 1, 
+    'Y': 2, 
+    'Z': 1
+}
+
+
 def convert_to_list(word):
     deconstructed_word = []
     for letter in word:
@@ -19,18 +49,15 @@ def convert_to_list(word):
 #         index += 1
 #     return count
 
-def get_sum ():
-    pass
-
 def list_length(list_to_count):
     count = 0
     for i in list_to_count:
         count += 1
     return count
 
-def multiply_letter_bank(letter_bank):
+def multiply_letter_pool(LETTER_POOL):
     weighted_letters =[]
-    for letter, amount in letter_bank.items():
+    for letter, amount in LETTER_POOL.items():
         grouped_letters = letter * amount
         for letters in convert_to_list(grouped_letters):
             weighted_letters.append(letters)
@@ -38,32 +65,27 @@ def multiply_letter_bank(letter_bank):
 
 
 def draw_hand():
-    final_letter_list = multiply_letter_bank(LETTER_POOL)
+    final_letter_pool = multiply_letter_pool(LETTER_POOL)
+    pool_length = list_length(final_letter_pool)
     drawn_letters = []
-    for i in range(10):
-        random_index = [random.randint(0, list_length(multiply_letter_bank(LETTER_POOL)) + 1)]
-        for i in random_index:
-            drawn_letters.append(final_letter_list[i])
+    purgatory_hand = {}
+    drawn_letters_count = 0
+    #for i in range(10):
+    while drawn_letters_count != 10:
+        random_index = random.randint(0, pool_length - 1)
+        letter = final_letter_pool[random_index]
+        
+        letter_count = 0
+        if letter in purgatory_hand:
+            letter_count = purgatory_hand[letter]
+        
+        if letter_count < LETTER_POOL[letter]:
+            drawn_letters.append(letter)
+            purgatory_hand[letter] = letter_count + 1
+            drawn_letters_count += 1
+            
     return drawn_letters
-    
-#need to finish this for draw letters-- right direction?
-# def letter_frequency(letter_bank):
-#     for letter, amount in letter_bank.items():
-#         if letter in draw_hand():
-#             list_length(draw_hand())
-            
-# def check_letter_overlap(word):
-#     word_submission = convert_to_list(word)
-#     #get count of each letter in word submission
-#     #& count of each letter in hand & subtract hand - submission >= 0
-    
-#     for letter in word_submission:
-#         if letter not in draw_hand():
-#             return False
-#         else: 
-#             pass
-            
-            
+
 def convert_to_dictionary(list):
     dictionary = {}
     for letter in list:
@@ -118,10 +140,7 @@ def highest_score(word_list):
                 winning_word = word
                 
     return winning_word, high_score
-            
-                
-            
-        
-        
 
-scoring('dog')
+final_letter_pool = multiply_letter_pool(LETTER_POOL)
+count = list_length(final_letter_pool)
+print(count)
