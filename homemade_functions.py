@@ -2,35 +2,6 @@ import random
 from random import randint
 from constants import*
 
-LETTER_POOL = {
-    'A': 9, 
-    'B': 2, 
-    'C': 2, 
-    'D': 4, 
-    'E': 12, 
-    'F': 2, 
-    'G': 3, 
-    'H': 2, 
-    'I': 9, 
-    'J': 1, 
-    'K': 1, 
-    'L': 4, 
-    'M': 2, 
-    'N': 6, 
-    'O': 8, 
-    'P': 2, 
-    'Q': 1, 
-    'R': 6, 
-    'S': 4, 
-    'T': 6, 
-    'U': 4, 
-    'V': 2, 
-    'W': 2, 
-    'X': 1, 
-    'Y': 2, 
-    'Z': 1
-}
-
 
 def convert_to_list(word):
     deconstructed_word = []
@@ -38,16 +9,6 @@ def convert_to_list(word):
         deconstructed_word.append(letter.upper())
     return deconstructed_word
 
-# def count_same_letters(list_to_count):
-#     count = 0
-#     index = 0
-    
-#     while index < list_length(list_to_count):
-#         current_letter = list_to_count[index]
-#         if list_to_count[index] == current_letter:
-#             count += 1
-#         index += 1
-#     return count
 
 def list_length(list_to_count):
     count = 0
@@ -70,7 +31,6 @@ def draw_hand():
     drawn_letters = []
     purgatory_hand = {}
     drawn_letters_count = 0
-    #for i in range(10):
     while drawn_letters_count != 10:
         random_index = random.randint(0, pool_length - 1)
         letter = final_letter_pool[random_index]
@@ -140,7 +100,3 @@ def highest_score(word_list):
                 winning_word = word
                 
     return winning_word, high_score
-
-final_letter_pool = multiply_letter_pool(LETTER_POOL)
-count = list_length(final_letter_pool)
-print(count)
