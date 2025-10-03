@@ -70,7 +70,8 @@ def scoring(word):
     score = 0
     
     if word_length >= 7:
-        score += 8
+        BONUS_SCORE = 8 #Likely a global variable
+        score += BONUS_SCORE
     for letter, count in word_played.items():
         for letters, points in SCORE_CHART.items():
             if letter in letters:
