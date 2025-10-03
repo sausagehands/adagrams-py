@@ -49,10 +49,7 @@ def draw_hand():
 def convert_to_dictionary(list):
     dictionary = {}
     for letter in list:
-        if letter in dictionary:
-            dictionary[letter] += 1
-        else:
-            dictionary[letter] = 1
+        dictionary[letter] = dictionary.get(letter,0) + 1
     return dictionary
 
 def compare_word_to_hand(word_dict, hand_dict):
