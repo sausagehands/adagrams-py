@@ -19,9 +19,8 @@ def list_length(list_to_count):
 def multiply_letter_pool(LETTER_POOL):
     weighted_letters =[]
     for letter, amount in LETTER_POOL.items():
-        grouped_letters = letter * amount
-        for letters in convert_to_list(grouped_letters):
-            weighted_letters.append(letters)
+        grouped_letters = [letter] * amount
+        weighted_letters.extend(grouped_letters)
     return weighted_letters
 
 
