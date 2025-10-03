@@ -1,5 +1,5 @@
 from random import randint
-from homemade_functions import*
+from adagrams.homemade_functions import*
 
 def draw_letters():
     chosen_letters = draw_hand()
