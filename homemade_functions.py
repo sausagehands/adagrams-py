@@ -30,7 +30,8 @@ def draw_hand():
     drawn_letters = []
     purgatory_hand = {}
     drawn_letters_count = 0
-    while drawn_letters_count != 10:
+    MAX_HAND_SIZE = 10
+    while drawn_letters_count != MAX_HAND_SIZE:
         random_index = random.randint(0, pool_length - 1)
         letter = final_letter_pool[random_index]
         
